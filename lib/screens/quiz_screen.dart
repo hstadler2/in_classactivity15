@@ -31,7 +31,7 @@ class _QuizScreenState extends State<QuizScreen> {
       });
     } catch (e) {
       print(e);
-      // Handle error appropriately
+      // Handle error appropriately (for example, show an error message to the user)
     }
   }
 
@@ -59,13 +59,13 @@ class _QuizScreenState extends State<QuizScreen> {
     });
   }
 
-  Widget _buildOptionButton(String option) {
-    return ElevatedButton(
-      onPressed: _answered ? null : () => _submitAnswer(option),
-      child: Text(option),
-      style: ElevatedButton.styleFrom(primary: Colors.blue),
-    );
-  }
+Widget _buildOptionButton(String option) {
+  return ElevatedButton(
+    onPressed: _answered ? null : () => _submitAnswer(option),
+    child: Text(option),
+    style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +78,7 @@ class _QuizScreenState extends State<QuizScreen> {
     if (_currentQuestionIndex >= _questions.length) {
       return Scaffold(
         body: Center(
-          child:
-              Text('Quiz Finished! Your Score: $_score/${_questions.length}'),
+          child: Text('Quiz Finished! Your Score: $_score/${_questions.length}'),
         ),
       );
     }
